@@ -1,4 +1,6 @@
 export const QueryProvider = () => {
     const [client] =
-    return
+    return (
+        <QuerY
+    )
 }                                 

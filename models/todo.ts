@@ -1,6 +1,7 @@
+import { todoSchemsProp } from "@/type";
 import mongoose from "mongoose";
 
-const todoSchema = new mongoose.Schema(
+const todoSchema = new mongoose.Schema<todoSchemsProp>(
   {
     title: {
       type: String,

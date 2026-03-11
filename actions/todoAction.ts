@@ -4,6 +4,7 @@ import dbConnection from "@/lib/database";
 import { Todo } from "@/models/todo";
 import { todoSchemsProp } from "@/type";
 import { createTodoSchema } from "@/validation/todo";
+import { revalidatePath } from "next/cache";
 
 export const createTodoAction = async (data: todoSchemsProp) => {
   const validatedata = createTodoSchema.parse(data);
@@ -19,6 +20,8 @@ export const createTodoAction = async (data: todoSchemsProp) => {
     const Receivedata = await Todo.create(validatedata);
     console.log("Receivedata is :", Receivedata);
 
+    revalidatePath("/");
+    
     return Response.json({
       success: true,
       message: "success to make todo",

@@ -1,4 +1,5 @@
 import TodoForm from "@/components/AddtodoForm";
+import TodoFilter from "@/components/todo-filter";
 import GetTodoList from "@/components/todo-list";
 import dbConnection from "@/lib/database";
 import Image from "next/image";
@@ -21,7 +22,8 @@ export default async function Home() {
       </div>
     </nav>
 
-    {/* <TodoForm/> */}
+    <TodoForm/>
+    <TodoFilter/>
     <GetTodoList/>
     <footer className="w-full bg-gray-900 text-gray-300 py-4 mt-10">
       <div className="max-w-5xl mx-auto text-center text-sm">

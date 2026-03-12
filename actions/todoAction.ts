@@ -21,7 +21,7 @@ export const createTodoAction = async (data: todoSchemsProp) => {
     console.log("Receivedata is :", Receivedata);
 
     revalidatePath("/");
-    
+
     return Response.json({
       success: true,
       message: "success to make todo",
@@ -32,6 +32,26 @@ export const createTodoAction = async (data: todoSchemsProp) => {
     return Response.json({
       success: false,
       message: "error to make todo",
+      status: 404,
+    });
+  }
+};
+
+export const getTodoAction = async () => {
+  try {
+    await dbConnection();
+
+    const todos = await Todo.find({}).sort({ createdAt: -1 }).lean();
+
+    return {
+      success: true,
+      message: "todo fetched success ",
+      data: JSON.parse(JSON.stringify(todos)),
+    };
+  } catch (error) {
+    return Response.json({
+      success: false,
+      message: "error to fetch todo",
       status: 404,
     });
   }

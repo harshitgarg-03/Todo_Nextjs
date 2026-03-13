@@ -5,4 +5,4 @@ interface todoSchemsProp extends mongoose.documents {
     description: string,
     priority: string,
     completed: boolean
-}                  
+}                   
